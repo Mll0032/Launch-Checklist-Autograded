@@ -1,5 +1,5 @@
 // Write your helper functions here!
-
+global.alert = jest.fn();
 
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
@@ -28,7 +28,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     }
 }
  
- function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
+ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let pilotStatus = document.getElementById("pilotStatus");
     let copilotStatus = document.getElementById("copilotStatus");
     let fuelStatus = document.getElementById("fuelStatus");
@@ -60,24 +60,24 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     if (fuelLevel < 10000) {
         fuelStatus.innerHTML = "Fuel level too low for launch";
         faultyItems.style.visibility = "visible";
-        launchStatus.innerHTML = "Shuttle not ready for launch";
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
         launchStatus.style.color = "red";
     } else {
         fuelStatus.innerHTML = "Fuel level high enough for launch";
     }
 
     if (cargoLevel > 10000) {
-        cargoStatus.innerHTML = "Cargo mass too high for launch";
+        cargoStatus.innerHTML = "Cargo mass too heavy for launch";
         faultyItems.style.visibility = "visible";
-        launchStatus.innerHTML = "Shuttle not ready for launch";
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
         launchStatus.style.color = "red";
     } else {
         cargoStatus.innerHTML = "Cargo mass low enough for launch";
     }
 
     if (fuelLevel >= 10000 && cargoLevel <= 10000) {
-        faultyItems.style.visibility = "hidden";
-        launchStatus.innerHTML = "Shuttle is ready for launch";
+        faultyItems.style.visibility = "visible";
+        launchStatus.innerHTML = "Shuttle is Ready for Launch";
         launchStatus.style.color = "green";
     }
  }
@@ -101,8 +101,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     return planets[randomIndex];
  }
  
-//  module.exports.addDestinationInfo = addDestinationInfo;
-//  module.exports.validateInput = validateInput;
-//  module.exports.formSubmission = formSubmission;
-//  module.exports.pickPlanet = pickPlanet; 
-//  module.exports.myFetch = myFetch;
+ module.exports.addDestinationInfo = addDestinationInfo;
+ module.exports.validateInput = validateInput;
+ module.exports.formSubmission = formSubmission;
+ module.exports.pickPlanet = pickPlanet; 
+ module.exports.myFetch = myFetch;
