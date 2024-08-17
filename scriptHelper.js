@@ -1,5 +1,5 @@
 // Write your helper functions here!
-global.alert = jest.fn();
+
 
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
@@ -21,37 +21,41 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  function validateInput(testInput) {
     if (testInput === "") {
         return "Empty";
-    } else if (isNaN(testInput)) {
-        return "Not a Number";
-    } else {
+    } else if (!isNaN(testInput)) {
         return "Is a Number";
+    } else {
+        return "Not a Number";
     }
 }
- 
+
  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+    let faultyItems = document.getElementById("faultyItems");
     let pilotStatus = document.getElementById("pilotStatus");
     let copilotStatus = document.getElementById("copilotStatus");
     let fuelStatus = document.getElementById("fuelStatus");
     let cargoStatus = document.getElementById("cargoStatus");
     let launchStatus = document.getElementById("launchStatus");
-    let faultyItems = document.getElementById("faultyItems");
+
+    console.log("List (faultyItems): ", list);
+    console.log("Pilot: ", pilot, "Co-pilot: ", copilot); 
+    console.log("Fuel Level: ", fuelLevel, "Cargo Level: ", cargoLevel);
 
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" ||
         validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty") {
         alert("All fields are required!");
-        console.log("Validation failed: Empty field(s) detected");
+        //console.log("Validation failed: Empty field(s) detected");
         return;
     }
 
     if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number") {
         alert("Pilot and Co-pilot names should be text.");
-        console.log("Validation failed: Pilot or Co-pilot name is a number");
+        //console.log("Validation failed: Pilot or Co-pilot name is a number");
         return;
     }
 
     if (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
         alert("Fuel Level and Cargo Mass should be numbers.");
-        console.log("Validation failed: Fuel level or cargo mass is not a number");
+        //console.log("Validation failed: Fuel level or cargo mass is not a number");
         return;
     }
     pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
