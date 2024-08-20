@@ -36,28 +36,24 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     let cargoStatus = document.getElementById("cargoStatus");
     let launchStatus = document.getElementById("launchStatus");
 
-    console.log("List (faultyItems): ", list);
-    console.log("Pilot: ", pilot, "Co-pilot: ", copilot); 
-    console.log("Fuel Level: ", fuelLevel, "Cargo Level: ", cargoLevel);
+    // console.log("List (faultyItems): ", list);
+    // console.log("Pilot: ", pilot, "Co-pilot: ", copilot); 
+    // console.log("Fuel Level: ", fuelLevel, "Cargo Level: ", cargoLevel);
 
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" ||
         validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty") {
         alert("All fields are required!");
         //console.log("Validation failed: Empty field(s) detected");
-        return;
-    }
-
-    if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number") {
+    }else if
+        (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number") {
         alert("Pilot and Co-pilot names should be text.");
         //console.log("Validation failed: Pilot or Co-pilot name is a number");
-        return;
-    }
-
-    if (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
+    }else if 
+        (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
         alert("Fuel Level and Cargo Mass should be numbers.");
         //console.log("Validation failed: Fuel level or cargo mass is not a number");
-        return;
-    }
+       
+    } else
     pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
     copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
 
