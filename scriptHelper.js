@@ -28,7 +28,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     }
 }
 
- function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
     let faultyItems = document.getElementById("faultyItems");
     let pilotStatus = document.getElementById("pilotStatus");
     let copilotStatus = document.getElementById("copilotStatus");
@@ -53,9 +53,10 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         alert("Fuel Level and Cargo Mass should be numbers.");
         //console.log("Validation failed: Fuel level or cargo mass is not a number");
        
-    } else
-    pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
-    copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+    } else{   
+        //only updates if previous validations return false 
+        pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+        copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
 
     if (fuelLevel < 10000) {
         fuelStatus.innerHTML = "Fuel level too low for launch";
@@ -81,7 +82,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         launchStatus.style.color = "green";
     }
  }
- 
+}
  async function myFetch() {
      let planetsReturned;
  
